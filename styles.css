@@ -1,0 +1,113 @@
+/* 🎨 Estilos personalizados para la PokéDex Avanzada */
+
+/* Inputs */
+.input {
+  background-color: #1e293b; /* slate-800 */
+  border: 1px solid #334155; /* slate-700 */
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  color: #f1f5f9; /* slate-100 */
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+.input:focus {
+  border-color: #6366f1; /* indigo-500 */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4);
+}
+
+/* Botones */
+.btn {
+  background-color: #6366f1; /* indigo-500 */
+  color: white;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+  background-color: #4f46e5; /* indigo-600 */
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background-color: #1e293b; /* slate-800 */
+  border: 1px solid #334155; /* slate-700 */
+  color: #e2e8f0; /* slate-200 */
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+.btn-secondary:hover {
+  background-color: #334155; /* slate-700 */
+}
+
+/* Títulos de secciones */
+.section-title {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #94a3b8; /* slate-400 */
+  font-weight: 600;
+}
+
+/* Links del nav */
+.navlink {
+  color: #cbd5e1; /* slate-300 */
+  transition: color 0.2s ease-in-out;
+}
+.navlink:hover {
+  color: white;
+}
+
+/* Estados de carga o vacío */
+.state-card {
+  border-radius: 1rem;
+  border: 1px solid #334155;
+  background-color: rgba(15, 23, 42, 0.7); /* slate-900/70 */
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Tarjetas de Pokémon */
+.card {
+  border-radius: 1rem;
+  border: 1px solid #334155;
+  background-color: rgba(15, 23, 42, 0.6);
+  padding: 0.75rem;
+  transition: all 0.3s ease-in-out;
+}
+.card:hover {
+  border-color: rgba(99, 102, 241, 0.6); /* indigo-500 */
+  transform: translateY(-2px);
+}
+
+/* Etiquetas (tipos de Pokémon) */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Spinner (cargando) */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

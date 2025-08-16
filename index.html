@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PokéDex Taller SFA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-slate-900/70 border-b border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl"></span>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-wide">PokéDex Interactiva</h1>
+      </div>
+      <nav class="hidden sm:flex gap-4 text-sm">
+        <a class="navlink" href="#">Inicio</a>
+        <a class="navlink" href="#stats">Stats</a>
+        <a class="navlink" href="#grid">Pokémon</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 flex-grow">
+    <!-- SIDEBAR -->
+    <aside class="rounded-2xl border border-slate-700 bg-slate-900/60 p-4 space-y-5">
+      <div>
+        <h2 class="section-title">Búsqueda </h2>
+        <input id="search" type="text" placeholder="Nombre del Pokémon..."
+               class="w-full mt-2 input"/>
+    
+      </div>
+
+      <div>
+        <h2 class="section-title">Tipos </h2>
+        <div id="typeFilters" class="flex flex-wrap gap-2 mt-2"></div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Generación </h2>
+        <select id="generation" class="input w-full mt-2">
+          <option value="">Todas</option>
+          <option value="1">Kanto (1–151)</option>
+          <option value="2">Johto (152–251)</option>
+          <option value="3">Hoenn (252–386)</option>
+          <option value="4">Sinnoh (387–493)</option>
+          <option value="5">Unova (494–649)</option>
+          <option value="6">Kalos (650–721)</option>
+          <option value="7">Alola (722–809)</option>
+          <option value="8">Galar (810–898)</option>
+          <option value="9">Paldea (899–1010)</option>
+        </select>
+      </div>
+
+      <div>
+        <h2 class="section-title">Ordenar ⬇️⬆️</h2>
+        <select id="sortBy" class="input w-full mt-2">
+          <option value="id">ID</option>
+          <option value="name">Nombre</option>
+          <option value="height">Altura</option>
+          <option value="weight">Peso</option>
+        </select>
+      </div>
+
+      <div class="flex gap-2">
+        <button id="resetBtn" class="btn-secondary w-full">Limpiar filtros</button>
+        <button id="favBtn" class="btn w-full">Favoritos</button>
+      </div>
+
+      <div id="stats" class="mt-6">
+        <h2 class="section-title">Estadísticas</h2>
+        <div class="mt-2 text-sm space-y-1">
+          <p>Total cargados: <span id="loadedCount" class="font-semibold">0</span></p>
+          <p>Mostrados: <span id="shownCount" class="font-semibold">0</span></p>
+        </div>
+      </div>
+
+      <footer class="pt-4 border-t border-slate-700 text-xs text-slate-400">
+        Taller Pokedex SFA
+      </footer>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- EMPTY/LOADING STATES -->
+      <div id="loadingState" class="state-card hidden">
+        <div class="spinner"></div>
+        <p class="mt-3">Cargando Pokémon...</p>
+      </div>
+      <div id="emptyState" class="state-card hidden">
+        <p>No hay resultados. Prueba quitando filtros o revisa la ortografía.</p>
+      </div>
+
+      <!-- GRID -->
+      <section id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></section>
+
+      <!-- PAGINATION (solo abajo) -->
+      <div class="flex justify-center items-center gap-4 mt-8">
+        <button id="prevBtn" class="btn-secondary px-4 py-2 rounded disabled:opacity-50">Anterior</button>
+        <span id="pageInfo" class="text-sm text-slate-300">Página 1</span>
+        <button id="nextBtn" class="btn px-4 py-2 rounded disabled:opacity-50">Siguiente</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER GLOBAL -->
+  <footer class="bg-slate-900 border-t border-slate-700 text-center py-4 text-sm text-slate-400">
+    Wiki Pokémon Avanzada — Proyecto de practica SFA
+  </footer>
+
+  <!-- MODAL -->
+  <div id="pokemonModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4">
+    <div class="rounded-2xl bg-slate-900 border border-slate-700 max-w-lg w-full p-4">
+      <div class="flex items-start justify-between">
+        <h3 id="modalTitle" class="text-lg font-bold"></h3>
+        <button id="closeModal" class="btn-secondary !px-3 !py-1 text-sm">Cerrar</button>
+      </div>
+      <div id="modalContent" class="mt-3"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
